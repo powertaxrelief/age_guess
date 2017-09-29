@@ -1,0 +1,23 @@
+#!/bin/bash
+
+correct=1
+correct_age=27
+while [ $correct -le 3 ]
+ do
+   echo "Guess the correct age! (1 - 100)"
+   read guessed_age
+     if (($guessed_age < 1 )); then
+       echo "That is not in the valid age range"
+     elif (($guessed_age > 100 )); then
+       echo "That is not in the valid age range"
+     elif (($guessed_age == $correct_age)); then
+       echo "That is correct!"
+       correct=$(( $correct + 3 ))
+     else
+       echo "That is not correct!"
+       correct=$(( $correct + 1 ))
+       continue
+     fi
+done
+
+
