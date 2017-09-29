@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "How old are you?"
+read user_age
+
+if (($user_age < 21)); then
+ echo "You are under 21"
+elif (($user_age > 21)); then
+ echo "You are over 21"
+else 
+ echo "You are 21"
+fi
