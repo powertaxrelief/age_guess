@@ -13,10 +13,13 @@ while [ $correct -le 3 ]
      elif (($guessed_age == $correct_age)); then
        echo "That is correct!"
        correct=$(( $correct + 3 ))            #If the answer is correct, make the loop stop immediately
-     else
-       echo "That is not correct!"
+     elif (($guessed_age < $correct_age)); then
+       echo "Too low!"
        correct=$(( $correct + 1 ))             #If the answer is incorrect, allow 3 guesses
-       continue
+     elif (($guessed_age > $correct_age)); then
+       echo "Too high!"
+       correct=$(( $correct + 1 ))             #If the answer is incorrect, allow 3 guesses
+                                               #May need continue (Test)
      fi
 done
 
