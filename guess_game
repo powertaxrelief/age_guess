@@ -1,25 +1,28 @@
 #!/bin/bash
 
-correct=1
+correct=0
 correct_age=$(( ( RANDOM % 10 ) + 1 ))
-while [ $correct -le 3 ]
+while [ $correct -le 4 ]
  do
-   echo "Guess the correct age! (1 - 100)"
+   echo "Guess the correct age! (1 - 10)"
    read guessed_age
      if (($guessed_age < 1 )); then
        echo "That is not in the valid age range"
-     elif (($guessed_age > 100 )); then
+     elif (($guessed_age > 10 )); then
        echo "That is not in the valid age range"
      elif (($guessed_age == $correct_age)); then
        echo "That is correct!"
-       correct=$(( $correct + 3 ))            #If the answer is correct, make the loop stop immediately
-     elif (($guessed_age < $correct_age)); then
+       correct=$(( $correct + 10 ))       #If the answer is correct, make the loop stop immediately
+      elif (($guessed_age < $correct_age)); then
        echo "Too low!"
-       correct=$(( $correct + 1 ))             #If the answer is incorrect, allow 3 guesses
+       correct=$(( $correct + 2 ))             #If the answer is incorrect, allow 3 guesses
      elif (($guessed_age > $correct_age)); then
        echo "Too high!"
-       correct=$(( $correct + 1 ))             #If the answer is incorrect, allow 3 guesses
+       correct=$(( $correct + 2 ))             #If the answer is incorrect, allow 3 guesses
                                                #May need continue (Test)
+     fi
+     if [ $correct == 6 ]; then
+       echo "The correct answer is $correct_age"
      fi
 done
 
